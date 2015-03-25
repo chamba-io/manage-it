@@ -8,7 +8,16 @@
  *
  * Main module of the application.
  */
-angular
-  .module('manageIt', [
-    'manageIt.auth'
-  ]);
+angular.module('manageIt', [
+  'ui.router',
+  'manageIt.auth'
+]).config(function ($stateProvider, $urlRouterProvider) {
+  $stateProvider.state('main', {
+    url: '/',
+    template: '<h1>Welcome Inside</h1>',
+    data: {
+      requiresLogin: true
+    }
+  });
+  $urlRouterProvider.otherwise('/');
+});
